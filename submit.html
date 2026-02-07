@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Your Decision — DecideForMePlease.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111111;
+    --surface: #1A1A1A;
+    --surface-2: #222222;
+    --text: #EDEDED;
+    --muted: #858585;
+    --neon-green: #C6F135;
+    --hot-orange: #FF5733;
+    --electric-violet: #8B5CF6;
+    --sky: #38BDF8;
+    --warm-pink: #FB7185;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(17,17,17,0.9);
+    backdrop-filter: blur(24px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-logo .dot {
+    width: 10px;
+    height: 10px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(198,241,53,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(198,241,53,0); }
+  }
+
+  .nav-back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--text); }
+
+  /* ============ MAIN FORM AREA ============ */
+  .form-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+
+  .form-page::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(ellipse at center, rgba(198,241,53,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .form-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-header p {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* ============ TIER SELECTOR ============ */
+  .tier-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .tier-option {
+    background: var(--surface);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    position: relative;
+  }
+
+  .tier-option:hover {
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .tier-option.active-verdict {
+    border-color: var(--sky);
+    background: rgba(56,189,248,0.06);
+  }
+
+  .tier-option.active-ruling {
+    border-color: var(--neon-green);
+    background: rgba(198,241,53,0.06);
+  }
+
+  .tier-option .tier-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .tier-option .tier-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .tier-option.active-verdict .tier-name { color: var(--sky); }
+  .tier-option.active-verdict .tier-price { color: var(--sky); }
+  .tier-option.active-ruling .tier-name { color: var(--neon-green); }
+  .tier-option.active-ruling .tier-price { color: var(--neon-green); }
+
+  .tier-check {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    transition: all 0.2s;
+  }
+
+  .active-verdict .tier-check {
+    background: var(--sky);
+    border-color: var(--sky);
+    color: var(--bg);
+  }
+
+  .active-ruling .tier-check {
+    background: var(--neon-green);
+    border-color: var(--neon-green);
+    color: var(--bg);
+  }
+
+  .tier-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .popular-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: var(--neon-green);
+    color: var(--bg);
+    padding: 0.15rem 0.5rem;
+    border-radius: 50px;
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-weight: 700;
+  }
+
+  /* ============ FORM FIELDS ============ */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-sublabel {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .form-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-input:focus {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 0 3px rgba(198,241,53,0.1);
+  }
+
+  .form-input::placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+
+  textarea.form-input {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* ============ SUBMIT BUTTON ============ */
+  .form-submit {
+    width: 100%;
+    background: var(--neon-green);
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover {
+    background: var(--hot-orange);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,87,51,0.25);
+  }
+
+  .form-submit .arrow {
+    display: inline-block;
+    margin-left: 0.4rem;
+    transition: transform 0.2s;
+  }
+
+  .form-submit:hover .arrow { transform: translateX(3px); }
+
+  .form-secure {
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+
+  .form-secure::before {
+    content: '🔒 ';
+  }
+
+  /* ============ SIDE NOTE ============ */
+  .form-note {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .form-note-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    color: var(--neon-green);
+  }
+
+  .form-note p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--neon-green); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .form-page { padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .tier-selector { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="dot"></span> DecideForMe</a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="form-page">
+  <div class="form-container">
+
+    <div class="form-header">
+      <h1>What Do You Need Decided?</h1>
+      <p>Give me the details. I'll give you the answer.</p>
+    </div>
+
+    <!-- TIER SELECTOR -->
+    <div class="tier-selector">
+      <div class="tier-option active-verdict" onclick="selectTier(this, 'verdict')">
+        <div class="tier-check">✓</div>
+        <div class="tier-name">⚡ The Verdict</div>
+        <div class="tier-price">$9.99</div>
+        <div class="tier-desc">Quick, blunt, final</div>
+      </div>
+      <div class="tier-option" onclick="selectTier(this, 'ruling')">
+        <div class="popular-tag">Most Popular</div>
+        <div class="tier-check"></div>
+        <div class="tier-name">📜 The Full Ruling</div>
+        <div class="tier-price">$19.99</div>
+        <div class="tier-desc">Verdict + full reasoning</div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-group form-row">
+      <div>
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-input" placeholder="Max">
+      </div>
+      <div>
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="max@email.com">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">What needs to be decided?</label>
+      <span class="form-sublabel">Be specific. "Which of these two hotels would you choose?" is great. "What should I do with my life?" is above my pay grade.</span>
+      <input type="text" class="form-input" placeholder='e.g. "Should we get a third dog?"'>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Any context I should know?</label>
+      <span class="form-sublabel">Optional — but the more I know, the better my ruling. Include both sides if it's a debate.</span>
+      <textarea class="form-input" placeholder='e.g. "My wife says three dogs is too many. We have a big yard. The dog is a golden retriever puppy and I already love him."'></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Who's this decision for?</label>
+      <span class="form-sublabel">Just you? Settling a debate between you and someone else? Helps me frame the ruling.</span>
+      <input type="text" class="form-input" placeholder='e.g. "Me and my boyfriend" or "Just me"'>
+    </div>
+
+    <button class="form-submit">
+      Pay & Get My Decision <span class="arrow">→</span>
+    </button>
+
+    <div class="form-secure">Secure payment via Stripe · You'll be redirected to checkout</div>
+
+    <div class="form-note">
+      <div class="form-note-title">⏱ When will I hear back?</div>
+      <p>I aim for same day, but guarantee within 72 hours. Your decision will be delivered to the email you provide above. Check your spam if you don't see it.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 DecideForMePlease.com</span>
+  <span>Made by just some guy</span>
+  <span><a href="#">Terms</a> · <a href="#">Privacy</a></span>
+</footer>
+
+<script>
+  // =====================================================
+  // TIER PRE-SELECTION
+  // Reads ?tier=verdict or ?tier=ruling from the URL
+  // and highlights the correct option automatically.
+  // =====================================================
+  const params = new URLSearchParams(window.location.search);
+  const tier = params.get('tier');
+
+  if (tier === 'ruling') {
+    document.querySelectorAll('.tier-option').forEach(opt => {
+      opt.classList.remove('active-verdict', 'active-ruling');
+      opt.querySelector('.tier-check').textContent = '';
+    });
+    const rulingCard = document.querySelectorAll('.tier-option')[1];
+    rulingCard.classList.add('active-ruling');
+    rulingCard.querySelector('.tier-check').textContent = '✓';
+  }
+
+  function selectTier(el, tier) {
+    document.querySelectorAll('.tier-option').forEach(opt => {
+      opt.classList.remove('active-verdict', 'active-ruling');
+      opt.querySelector('.tier-check').textContent = '';
+    });
+    el.classList.add(tier === 'verdict' ? 'active-verdict' : 'active-ruling');
+    el.querySelector('.tier-check').textContent = '✓';
+  }
+
+  // =====================================================
+  // STRIPE PAYMENT LINKS
+  // Replace these with your real Stripe Payment Link URLs.
+  // See SETUP-GUIDE.md → Part 1 for how to create them.
+  // =====================================================
+  const STRIPE_VERDICT_URL = 'https://buy.stripe.com/PASTE_YOUR_VERDICT_LINK_HERE';
+  const STRIPE_RULING_URL  = 'https://buy.stripe.com/PASTE_YOUR_RULING_LINK_HERE';
+
+  document.querySelector('.form-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    const name     = document.querySelector('input[placeholder="Max"]').value.trim();
+    const email    = document.querySelector('input[type="email"]').value.trim();
+    const question = document.querySelector('input[placeholder*="third dog"]').value.trim();
+
+    if (!name || !email || !question) {
+      alert('Please fill in your name, email, and the decision you need made.');
+      return;
+    }
+
+    // Determine which tier is selected
+    const isRuling = document.querySelector('.active-ruling');
+    const stripeUrl = isRuling ? STRIPE_RULING_URL : STRIPE_VERDICT_URL;
+
+    // Redirect to Stripe checkout
+    window.location.href = stripeUrl;
+  });
+</script>
+
+</body>
+</html>
