@@ -124,106 +124,13 @@
     font-size: 0.9rem;
   }
 
-  /* ============ TIER SELECTOR ============ */
-  .tier-selector {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .tier-option {
-    background: var(--surface);
-    border: 2px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 1.2rem 1rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-    position: relative;
-  }
-
-  .tier-option:hover {
-    border-color: rgba(255,255,255,0.12);
-  }
-
-  .tier-option.active-verdict {
-    border-color: var(--sky);
-    background: rgba(56,189,248,0.06);
-  }
-
-  .tier-option.active-ruling {
-    border-color: var(--neon-green);
-    background: rgba(198,241,53,0.06);
-  }
-
-  .tier-option .tier-name {
+  .form-header .price-reminder {
+    display: inline-block;
+    margin-top: 0.8rem;
     font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .tier-option .tier-price {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-  }
-
-  .tier-option.active-verdict .tier-name { color: var(--sky); }
-  .tier-option.active-verdict .tier-price { color: var(--sky); }
-  .tier-option.active-ruling .tier-name { color: var(--neon-green); }
-  .tier-option.active-ruling .tier-price { color: var(--neon-green); }
-
-  .tier-check {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.6rem;
-    transition: all 0.2s;
-  }
-
-  .active-verdict .tier-check {
-    background: var(--sky);
-    border-color: var(--sky);
-    color: var(--bg);
-  }
-
-  .active-ruling .tier-check {
-    background: var(--neon-green);
-    border-color: var(--neon-green);
-    color: var(--bg);
-  }
-
-  .tier-desc {
-    font-size: 0.72rem;
-    color: var(--muted);
-    margin-top: 0.3rem;
-    line-height: 1.4;
-  }
-
-  .popular-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: var(--neon-green);
-    color: var(--bg);
-    padding: 0.15rem 0.5rem;
-    border-radius: 50px;
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--neon-green);
   }
 
   /* ============ TALLY EMBED ============ */
@@ -299,7 +206,6 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .form-page { padding: 2rem 1.5rem; }
-    .tier-selector { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -317,43 +223,18 @@
     <div class="form-header">
       <h1>What Do You Need Decided?</h1>
       <p>Give me the details. I'll give you the answer.</p>
+      <div class="price-reminder">$10 · Delivered within 24 hours</div>
     </div>
 
-    <!-- TIER SELECTOR -->
-    <div class="tier-selector">
-      <div class="tier-option active-verdict" onclick="selectTier('verdict')">
-        <div class="tier-check">✓</div>
-        <div class="tier-name">⚡ The Verdict</div>
-        <div class="tier-price">$9.99</div>
-        <div class="tier-desc">Quick, blunt, final</div>
-      </div>
-      <div class="tier-option" onclick="selectTier('ruling')">
-        <div class="popular-tag">Most Popular</div>
-        <div class="tier-check"></div>
-        <div class="tier-name">📜 The Full Ruling</div>
-        <div class="tier-price">$19.99</div>
-        <div class="tier-desc">Verdict + full reasoning</div>
-      </div>
-    </div>
-
-    <!-- TALLY FORM EMBEDS (one per tier, toggled by JS) -->
+    <!-- SINGLE TALLY FORM EMBED -->
     <div class="tally-embed-container">
       <iframe
-        id="tally-verdict"
+        id="tally-form"
         data-tally-src="https://tally.so/embed/NpoK9b?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
         loading="lazy"
         width="100%"
         height="500"
-        title="The Verdict Form"
-      ></iframe>
-      <iframe
-        id="tally-ruling"
-        data-tally-src="https://tally.so/embed/rjPN9p?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-        width="100%"
-        height="500"
-        title="The Full Ruling Form"
-        style="display:none;"
+        title="Submit Your Decision"
       ></iframe>
     </div>
 
@@ -361,7 +242,7 @@
 
     <div class="form-note">
       <div class="form-note-title">⏱ When will I hear back?</div>
-      <p>I aim for same day, but guarantee within 72 hours. Your decision will be delivered to the email you provide. Check your spam if you don't see it.</p>
+      <p>Most decisions are delivered the same day. 24 hours max. Your decision will be delivered to the email you provide. Check your spam if you don't see it.</p>
     </div>
 
   </div>
@@ -373,41 +254,8 @@
   <span><a href="#">Terms</a> · <a href="#">Privacy</a></span>
 </footer>
 
-<!-- Tally embed script (loads and activates the iframes) -->
+<!-- Tally embed script -->
 <script src="https://tally.so/widgets/embed.js"></script>
-
-<script>
-  const verdictFrame = document.getElementById('tally-verdict');
-  const rulingFrame = document.getElementById('tally-ruling');
-  const tierOptions = document.querySelectorAll('.tier-option');
-
-  function selectTier(tier) {
-    // Update tier card styling
-    tierOptions.forEach(opt => {
-      opt.classList.remove('active-verdict', 'active-ruling');
-      opt.querySelector('.tier-check').textContent = '';
-    });
-
-    if (tier === 'verdict') {
-      tierOptions[0].classList.add('active-verdict');
-      tierOptions[0].querySelector('.tier-check').textContent = '✓';
-      verdictFrame.style.display = 'block';
-      rulingFrame.style.display = 'none';
-    } else {
-      tierOptions[1].classList.add('active-ruling');
-      tierOptions[1].querySelector('.tier-check').textContent = '✓';
-      verdictFrame.style.display = 'none';
-      rulingFrame.style.display = 'block';
-    }
-  }
-
-  // Pre-select tier based on URL parameter (?tier=verdict or ?tier=ruling)
-  const params = new URLSearchParams(window.location.search);
-  const urlTier = params.get('tier');
-  if (urlTier === 'ruling') {
-    selectTier('ruling');
-  }
-</script>
 
 </body>
 </html>
