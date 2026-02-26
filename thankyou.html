@@ -170,13 +170,6 @@
     font-weight: 600;
   }
 
-  .order-value.tier-badge {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    color: var(--neon-green);
-    font-size: 0.9rem;
-  }
-
   .order-divider {
     border: none;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -356,15 +349,11 @@
     <div class="success-icon">⚖️</div>
 
     <h1>Your Decision Is <span>In Progress.</span></h1>
-    <p class="thankyou-sub">I've received your question and I'm deliberating. You can close this page — your ruling will arrive by email.</p>
+    <p class="thankyou-sub">I've received your question and I'm deliberating. You can close this page — your verdict will arrive by email.</p>
 
     <!-- ORDER SUMMARY -->
     <div class="order-summary">
       <div class="order-summary-title">Order Confirmation</div>
-      <div class="order-row">
-        <span class="order-label">Tier</span>
-        <span class="order-value tier-badge">📜 The Full Ruling</span>
-      </div>
       <div class="order-row">
         <span class="order-label">Your question</span>
         <span class="order-value">"Should we get a third dog?"</span>
@@ -375,12 +364,12 @@
       </div>
       <div class="order-row">
         <span class="order-label">Estimated delivery</span>
-        <span class="order-value">Within 72 hours</span>
+        <span class="order-value">Within 24 hours</span>
       </div>
       <hr class="order-divider">
       <div class="order-row total">
         <span class="order-label">Total</span>
-        <span class="order-value">$19.99</span>
+        <span class="order-value">$10.00</span>
       </div>
     </div>
 
@@ -397,7 +386,7 @@
       </div>
       <div class="next-step-item">
         <div class="step-num">3</div>
-        <div class="step-text"><strong>Your ruling arrives by email</strong> within 72 hours. Check spam if you don't see it. My decisions sometimes trigger spam filters (fair).</div>
+        <div class="step-text"><strong>Your verdict arrives by email</strong> within 24 hours. Check spam if you don't see it. My decisions sometimes trigger spam filters (fair).</div>
       </div>
     </div>
 
@@ -406,7 +395,7 @@
       <h3>Know Someone Who Can't Decide Anything?</h3>
       <p>Send them my way. They need this more than you do.</p>
       <div class="share-link-box">
-        <input type="text" class="share-link-input" value="decideforme.com" readonly>
+        <input type="text" class="share-link-input" value="decideformeplease.com" readonly>
         <button class="share-copy-btn" onclick="copyLink(this)">Copy Link</button>
       </div>
       <div class="share-tagline">Because friends don't let friends overthink</div>
@@ -423,7 +412,7 @@
 
 <script>
   function copyLink(btn) {
-    navigator.clipboard.writeText('https://decideforme.com').then(() => {
+    navigator.clipboard.writeText('https://decideformeplease.com').then(() => {
       btn.textContent = 'Copied!';
       setTimeout(() => btn.textContent = 'Copy Link', 2000);
     });
