@@ -499,65 +499,25 @@
     pointer-events: none;
   }
 
-  .pricing-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 750px;
+  .pricing-card-single {
+    max-width: 480px;
     margin: 0 auto;
-  }
-
-  .price-card {
     background: var(--surface);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--neon-green);
     border-radius: 16px;
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem;
+    text-align: center;
     position: relative;
     transition: all 0.25s;
-  }
-
-  .price-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    border-color: rgba(255,255,255,0.1);
-  }
-
-  .price-card:not(.featured) {
-    border-color: rgba(56,189,248,0.15);
-  }
-
-  .price-card:not(.featured):hover {
-    border-color: rgba(56,189,248,0.3);
-    box-shadow: 0 12px 40px rgba(56,189,248,0.08);
-  }
-
-  .price-card.featured {
-    border-color: var(--neon-green);
     background: linear-gradient(180deg, rgba(198,241,53,0.06) 0%, var(--surface) 40%);
   }
 
-  .price-card.featured:hover {
+  .pricing-card-single:hover {
+    transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(198,241,53,0.1);
   }
 
-  .price-card-popular {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--neon-green);
-    color: var(--bg);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 0.35rem 1rem;
-    border-radius: 50px;
-    white-space: nowrap;
-  }
-
-  .price-card-badge {
+  .pricing-card-single .price-card-badge {
     font-family: 'Space Mono', monospace;
     font-size: 0.58rem;
     text-transform: uppercase;
@@ -566,7 +526,7 @@
     margin-bottom: 0.6rem;
   }
 
-  .price-card-title {
+  .pricing-card-single .price-card-title {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 1.5rem;
@@ -574,38 +534,42 @@
     letter-spacing: -0.5px;
   }
 
-  .price-card-price {
+  .pricing-card-single .price-card-price {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 3.2rem;
+    font-size: 4rem;
     letter-spacing: -2px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: var(--neon-green);
   }
 
-  .price-card:not(.featured) .price-card-price {
-    color: var(--sky);
-  }
-
-  .price-cents {
-    font-size: 1.5rem;
-    vertical-align: super;
-    letter-spacing: 0;
-  }
-
-  .price-card-desc {
-    font-size: 0.88rem;
+  .pricing-card-single .price-per {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
     color: var(--muted);
-    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     margin-bottom: 1.5rem;
   }
 
-  .price-card-features {
+  .pricing-card-single .price-card-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+  }
+
+  .pricing-card-single .price-card-features {
     list-style: none;
+    margin-bottom: 2rem;
+    text-align: left;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 2rem;
   }
 
-  .price-card-features li {
+  .pricing-card-single .price-card-features li {
     font-size: 0.82rem;
     color: var(--muted);
     padding: 0.45rem 0;
@@ -615,7 +579,7 @@
     gap: 0.6rem;
   }
 
-  .price-card-features li::before {
+  .pricing-card-single .price-card-features li::before {
     content: '✓';
     color: var(--neon-green);
     font-weight: 700;
@@ -623,70 +587,38 @@
     flex-shrink: 0;
   }
 
-  .price-card-btn {
+  .pricing-card-single .price-card-btn {
     display: block;
     text-align: center;
-    padding: 0.85rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
     text-decoration: none;
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: all 0.2s;
-    background: rgba(56,189,248,0.1);
-    color: var(--sky);
-    border: 1px solid rgba(56,189,248,0.25);
-  }
-
-  .price-card-btn:hover {
-    background: var(--sky);
-    color: var(--bg);
-    transform: translateY(-1px);
-  }
-
-  .price-card-btn.featured-btn {
     background: var(--neon-green);
     color: var(--bg);
     border: none;
   }
 
-  .price-card-btn.featured-btn:hover {
+  .pricing-card-single .price-card-btn:hover {
     background: var(--hot-orange);
     color: white;
+    transform: translateY(-1px);
     box-shadow: 0 6px 20px rgba(255,87,51,0.25);
   }
 
-  .price-card-btn span {
+  .pricing-card-single .price-card-btn span {
     display: inline-block;
     margin-left: 0.3rem;
     transition: transform 0.2s;
   }
 
-  .price-card-btn:hover span { transform: translateX(3px); }
+  .pricing-card-single .price-card-btn:hover span { transform: translateX(3px); }
 
-  /* ============ VERDICTS (grouped by tier) ============ */
-  .verdict-tier-label {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.2rem;
-    max-width: 1000px;
-    margin: 0 auto 0.3rem;
-    padding: 0 0.5rem;
-  }
-
-  .tier-quick-label { color: var(--sky); }
-  .tier-full-label { color: var(--neon-green); margin-top: 3rem; }
-
-  .verdict-tier-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    max-width: 1000px;
-    margin: 0 auto 1.2rem;
-    padding: 0 0.5rem;
-  }
-
-  /* Quick verdict cards - compact row */
-  .verdict-grid-quick {
+  /* ============ VERDICT CARDS ============ */
+  .verdict-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -694,43 +626,43 @@
     margin: 0 auto;
   }
 
-  .verdict-card-quick {
+  .verdict-card {
     background: var(--surface);
     padding: 1.5rem;
     border-radius: 12px;
-    border: 1px solid rgba(56,189,248,0.1);
+    border: 1px solid rgba(198,241,53,0.08);
     transition: all 0.25s;
     display: flex;
     flex-direction: column;
   }
 
-  .verdict-card-quick:hover {
+  .verdict-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(56,189,248,0.2);
+    border-color: rgba(198,241,53,0.18);
     box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   }
 
-  .verdict-card-quick .tag {
+  .verdict-card .tag {
     font-family: 'Space Mono', monospace;
     font-size: 0.55rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--sky);
+    color: var(--neon-green);
     margin-bottom: 0.6rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .verdict-card-quick .tag::before {
+  .verdict-card .tag::before {
     content: '';
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--sky);
+    background: var(--neon-green);
   }
 
-  .verdict-card-quick .q {
+  .verdict-card .q {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
@@ -739,79 +671,17 @@
     flex: 1;
   }
 
-  .verdict-card-quick .verdict-short {
+  .verdict-card .verdict-answer {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
-    color: var(--sky);
-    background: rgba(56,189,248,0.08);
-    border-left: 3px solid var(--sky);
+    font-size: 1.05rem;
+    color: var(--neon-green);
+    background: rgba(198,241,53,0.08);
+    border-left: 3px solid var(--neon-green);
     border-radius: 0 6px 6px 0;
     padding: 0.6rem 1rem;
+    line-height: 1.4;
   }
-
-  /* Full ruling cards - stacked full width */
-  .verdict-grid-full {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .verdict-card-full {
-    background: var(--surface);
-    padding: 2rem 2.5rem;
-    border-radius: 14px;
-    border: 1px solid rgba(198,241,53,0.08);
-    transition: all 0.25s;
-  }
-
-  .verdict-card-full:hover {
-    border-color: rgba(198,241,53,0.15);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  }
-
-  .verdict-card-full .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--neon-green);
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .verdict-card-full .tag::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--neon-green);
-  }
-
-  .verdict-card-full .q {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    line-height: 1.35;
-  }
-
-  .verdict-card-full .a {
-    font-size: 0.88rem;
-    color: var(--neon-green);
-    padding: 1rem 1.2rem;
-    background: rgba(198,241,53,0.05);
-    border-left: 3px solid var(--neon-green);
-    border-radius: 0 8px 8px 0;
-    line-height: 1.65;
-  }
-
-  .verdict-card-full .a strong { color: var(--text); }
-  .verdict-card-full .a em { color: rgba(198,241,53,0.7); }
 
   /* ============ FINAL CTA ============ */
   .final-cta {
@@ -882,9 +752,7 @@
     .hero { padding: 4.5rem 1.5rem 3.5rem; }
     .metrics { grid-template-columns: repeat(2, 1fr); }
     .how-steps { grid-template-columns: 1fr; max-width: 450px; }
-    .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
-    .verdict-grid-quick { grid-template-columns: 1fr; max-width: 400px; }
-    .verdict-card-full { padding: 1.5rem; }
+    .verdict-grid { grid-template-columns: 1fr; max-width: 400px; }
     .how, .verdicts, .faq, .final-cta, .pricing { padding: 3.5rem 1.5rem; }
     .testimonial { padding: 2.5rem 1.5rem; }
     .testimonial-quote { font-size: 1.2rem; }
@@ -897,12 +765,12 @@
 <div class="announce">
   <div class="announce-text">
     <span>⚡ Now accepting decisions</span>
-    <span>⚡ Verdicts from $9.99</span>
+    <span>⚡ Just $10</span>
     <span>⚡ Zero qualifications</span>
     <span>⚡ Fast turnaround</span>
     <span>⚡ I'm just some guy</span>
     <span>⚡ Now accepting decisions</span>
-    <span>⚡ Verdicts from $9.99</span>
+    <span>⚡ Just $10</span>
     <span>⚡ Zero qualifications</span>
     <span>⚡ Fast turnaround</span>
     <span>⚡ I'm just some guy</span>
@@ -922,13 +790,13 @@
   <div class="hero-tag"><span class="blink"></span> Pay a stranger to make your decisions</div>
   <h1>Can't decide?<br><span class="line2">I'll do it.</span></h1>
   <p class="hero-desc">I'm just some guy on the internet — but I'll give you an answer and maybe win you an argument.</p>
-  <div class="hero-price">Decisions from <span>$9.99</span></div>
-  <a href="#pricing" class="btn-primary">Get Your Decision <span class="arrow">→</span></a>
+  <div class="hero-price">One decision. <span>$10</span></div>
+  <a href="/submit" class="btn-primary">Get Your Decision <span class="arrow">→</span></a>
 </section>
 
 <div class="metrics">
   <div class="metric"><div class="metric-val">237+</div><div class="metric-label">Decisions Made</div></div>
-  <div class="metric"><div class="metric-val">&lt;72hr</div><div class="metric-label">Turnaround</div></div>
+  <div class="metric"><div class="metric-val">&lt;24hr</div><div class="metric-label">Turnaround</div></div>
   <div class="metric"><div class="metric-val">0</div><div class="metric-label">Qualifications</div></div>
   <div class="metric"><div class="metric-val">100%</div><div class="metric-label">Final. No Refunds.</div></div>
 </div>
@@ -938,43 +806,28 @@
   <h2 class="section-heading">Three Steps. That's It.</h2>
   <div class="how-steps">
     <div class="how-step"><div class="how-step-num">01</div><div class="how-step-icon">📝</div><h3>Tell me your problem</h3><p>Fill out the form. Give me context or don't — I'll work with whatever you give me.</p></div>
-    <div class="how-step"><div class="how-step-num">02</div><div class="how-step-icon">💸</div><h3>Pick your tier</h3><p>Quick verdict or the full ruling? Choose your level of commitment (and mine). Secure checkout via Stripe.</p></div>
-    <div class="how-step"><div class="how-step-num">03</div><div class="how-step-icon">⚖️</div><h3>Get your verdict</h3><p>A thoughtful(ish), final, non-negotiable decision lands in your inbox. You're welcome.</p></div>
+    <div class="how-step"><div class="how-step-num">02</div><div class="how-step-icon">💸</div><h3>Pay $10</h3><p>That's it. One price. Secure checkout via Stripe.</p></div>
+    <div class="how-step"><div class="how-step-num">03</div><div class="how-step-icon">⚖️</div><h3>Get your verdict</h3><p>A short, confident, non-negotiable decision lands in your inbox within 24 hours. You're welcome.</p></div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
-  <div class="section-tag">// choose your level</div>
-  <h2 class="section-heading">Two Ways To Outsource Your Thinking</h2>
-  <div class="pricing-cards">
-    <div class="price-card">
-      <div class="price-card-badge">Quick & Dirty</div>
-      <h3 class="price-card-title">The Verdict</h3>
-      <div class="price-card-price">$9<span class="price-cents">.99</span></div>
-      <p class="price-card-desc">A short, punchy, final answer. Minimal explanation — possibly none at all. Just the call.</p>
-      <ul class="price-card-features">
-        <li>One-sentence decision (could be one word)</li>
-        <li>Delivered within 72 hours</li>
-        <li>Completely final and non-negotiable</li>
-        <li>Perfect for "just tell me what to do"</li>
-      </ul>
-      <a href="/submit?tier=verdict" class="price-card-btn">Get The Verdict <span>→</span></a>
-    </div>
-    <div class="price-card featured">
-      <div class="price-card-popular">Most Popular</div>
-      <div class="price-card-badge">The Full Experience</div>
-      <h3 class="price-card-title">The Full Ruling</h3>
-      <div class="price-card-price">$19<span class="price-cents">.99</span></div>
-      <p class="price-card-desc">The verdict plus my full reasoning — delivered as an entertaining mini-essay. Think judge's opinion, but funny.</p>
-      <ul class="price-card-features">
-        <li>Everything in The Verdict</li>
-        <li>Full written reasoning & explanation</li>
-        <li>Entertaining enough to screenshot & share</li>
-        <li>Perfect for settling debates with friends</li>
-      </ul>
-      <a href="/submit?tier=ruling" class="price-card-btn featured-btn">Get The Full Ruling <span>→</span></a>
-    </div>
+  <div class="section-tag">// simple pricing</div>
+  <h2 class="section-heading">One Price. One Decision.</h2>
+  <div class="pricing-card-single">
+    <div class="price-card-badge">All In</div>
+    <h3 class="price-card-title">The Decision</h3>
+    <div class="price-card-price">$10</div>
+    <div class="price-per">Per decision</div>
+    <p class="price-card-desc">Submit your question, get a short, confident, final answer. No hedging, no "it depends," no wishy-washy nonsense.</p>
+    <ul class="price-card-features">
+      <li>A real decision — not a suggestion</li>
+      <li>Delivered to your inbox within 24 hours</li>
+      <li>Completely final and non-negotiable</li>
+      <li>Entertaining enough to screenshot & share</li>
+    </ul>
+    <a href="/submit" class="price-card-btn">Get Your Decision <span>→</span></a>
   </div>
 </section>
 
@@ -982,51 +835,42 @@
   <div class="section-tag">// sample verdicts</div>
   <h2 class="section-heading">See What You're Getting</h2>
 
-  <!-- THE VERDICT EXAMPLES -->
-  <div class="verdict-tier-label tier-quick-label">⚡ The Verdict — $9.99</div>
-  <p class="verdict-tier-desc">Quick. Blunt. Final.</p>
-  <div class="verdict-grid-quick">
-    <div class="verdict-card-quick">
+  <div class="verdict-grid">
+    <div class="verdict-card">
       <div class="tag">Debate Settler</div>
-      <div class="q">"Is it universally known that the person who cooks does not do dishes?"</div>
-      <div class="a verdict-short">Universally known. Non-negotiable.</div>
+      <div class="q">"Does the person who cooks also have to do the dishes?"</div>
+      <div class="verdict-answer">Absolutely not. Non-negotiable.</div>
     </div>
-    <div class="verdict-card-quick">
+    <div class="verdict-card">
+      <div class="tag">Beauty</div>
+      <div class="q">"Should I get bangs?"</div>
+      <div class="verdict-answer">Do it. They grow back.</div>
+    </div>
+    <div class="verdict-card">
+      <div class="tag">Relationships</div>
+      <div class="q">"Should I text my ex happy birthday?"</div>
+      <div class="verdict-answer">No. Keep walking.</div>
+    </div>
+    <div class="verdict-card">
+      <div class="tag">Baby Names</div>
+      <div class="q">"We can't decide — Oliver or Henry?"</div>
+      <div class="verdict-answer">Oliver. Final answer.</div>
+    </div>
+    <div class="verdict-card">
       <div class="tag">Pets</div>
       <div class="q">"Is it crazy to get a third dog?"</div>
-      <div class="a verdict-short">Yes. Three is crazy.</div>
+      <div class="verdict-answer">Yes. Three is a zoo. Do it anyway.</div>
     </div>
-    <div class="verdict-card-quick">
-      <div class="tag">Travel</div>
-      <div class="q">"Is it rude to recline your seat on an airplane?"</div>
-      <div class="a verdict-short">Recline. That's what the button is for.</div>
-    </div>
-  </div>
-
-  <!-- THE FULL RULING EXAMPLES -->
-  <div class="verdict-tier-label tier-full-label">📜 The Full Ruling — $19.99</div>
-  <p class="verdict-tier-desc">The verdict plus the reasoning. Entertaining enough to screenshot.</p>
-  <div class="verdict-grid-full">
-    <div class="verdict-card-full">
-      <div class="tag">Date Night</div>
-      <div class="q">"I want Mexican for date night but my boyfriend wants Italian. Please decide for us?"</div>
-      <div class="a">Mexican. Italian date nights sound romantic in theory, but in practice you're filling up on bread, the pasta's heavy, and neither of you has any energy after. Mexican gives you better variety, a lighter option if you want one, and margaritas don't hurt either. The vibe is usually more fun too. Tell him Italian can be next week.</div>
-    </div>
-    <div class="verdict-card-full">
-      <div class="tag">Career</div>
-      <div class="q">"Should I quit my job to start a candle business?"</div>
-      <div class="a">Keep the job. You're not really asking "should I start a candle business" — you're asking "should I bet my rent on candles." Those are different questions. Start making candles on evenings and weekends. Sell to friends first, then try an Etsy shop or local markets. Track your actual costs and profit per candle. When the side income consistently covers your monthly expenses, that's when you put in your notice. Your day job isn't the thing holding you back — it's the thing funding your runway.</div>
-    </div>
-    <div class="verdict-card-full">
-      <div class="tag">Money</div>
-      <div class="q">"My friends want to do an expensive group trip but I can't really afford it. What do I do?"</div>
-      <div class="a">Be honest. Say something like "I'd love to come but that's outside my budget right now — is there a way we can make it work for less, or can I join for part of it?" Real friends will respect that. If they don't, that tells you something too. Going into debt for a vacation you'll spend the next six months paying off isn't worth it, no matter how good the Instagram photos look. There will be other trips.</div>
+    <div class="verdict-card">
+      <div class="tag">Fitness</div>
+      <div class="q">"Should I sign up for the marathon?"</div>
+      <div class="verdict-answer">Sign up. You need a reason to stop hitting snooze.</div>
     </div>
   </div>
 </section>
 
 <div class="testimonial">
-  <div class="testimonial-quote">I paid a stranger $15 to tell me what to name my cat. He chose...Kevin. I actually like it.</div>
+  <div class="testimonial-quote">I paid a stranger $10 to tell me what to name my cat. He said Kevin. Honestly? Perfect name.</div>
   <div class="testimonial-attr">— Actual Customer (Probably)</div>
 </div>
 
@@ -1036,17 +880,16 @@
   <div class="faq-list">
     <div class="faq-item"><div class="faq-q">Are you actually qualified for this?</div><div class="faq-ans">Not even a little bit. But I'll give you a straight answer and maybe give you something to show your boyfriend that will win you an argument. That's worth something.</div></div>
     <div class="faq-item"><div class="faq-q">What if I disagree with your decision?</div><div class="faq-ans">That's kind of the point — you couldn't decide, so I did. My ruling is final. No appeals, no rebuttals, no "yeah but what about..."</div></div>
-    <div class="faq-item"><div class="faq-q">What's the difference between The Verdict and The Full Ruling?</div><div class="faq-ans">The Verdict is quick and blunt — sometimes just a word or two. The Full Ruling gives you my reasoning, which is handy when you need ammunition to win the argument you're currently losing.</div></div>
-    <div class="faq-item"><div class="faq-q">How fast will I get my answer?</div><div class="faq-ans">Same day is the goal. 72 hours max. Some verdicts require careful deliberation (or a good night's sleep first).</div></div>
-    <div class="faq-item"><div class="faq-q">What kinds of decisions will you make?</div><div class="faq-ans">Low-stakes stuff: where to eat, what to wear, whether your spouse is right (they probably are), pet decisions, dumb debates. I'm not deciding your medical treatment or investment strategy.</div></div>
+    <div class="faq-item"><div class="faq-q">How fast will I get my answer?</div><div class="faq-ans">Within 24 hours. Most decisions are delivered the same day. Some require careful deliberation (or a good night's sleep first).</div></div>
+    <div class="faq-item"><div class="faq-q">What kinds of decisions will you make?</div><div class="faq-ans">Low-stakes stuff: should you get bangs, what to name the dog, whether your spouse is right (they probably are), dumb debates, life's coin-flip moments. I'm not deciding your medical treatment or investment strategy.</div></div>
     <div class="faq-item"><div class="faq-q">Is this a joke?</div><div class="faq-ans">Real service. Real money. Real decisions. Also genuinely entertaining. Those things aren't mutually exclusive.</div></div>
   </div>
 </section>
 
 <section class="final-cta">
   <h2>Stop overthinking.<br><span class="pop">Start outsourcing.</span></h2>
-  <p>Quick verdict or full ruling — either way, your decision is handled.</p>
-  <a href="#pricing" class="btn-primary">Get Your Decision <span class="arrow">→</span></a>
+  <p>Ten bucks. One decision. Your problem, handled.</p>
+  <a href="/submit" class="btn-primary">Get Your Decision <span class="arrow">→</span></a>
 </section>
 
 <footer>
