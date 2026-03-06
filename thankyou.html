@@ -336,6 +336,24 @@
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2066040063963697');
+fbq('track', 'PageView');
+fbq('track', 'Purchase', {value: 10.00, currency: 'USD'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2066040063963697&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -360,7 +378,7 @@
       </div>
       <div class="order-row">
         <span class="order-label">Delivered to</span>
-        <span class="order-value">max@email.com</span>
+        <span class="order-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a171b023a1f171b131654191517">[email&#160;protected]</a></span>
       </div>
       <div class="order-row">
         <span class="order-label">Estimated delivery</span>
@@ -410,14 +428,5 @@
   <span><a href="#">Terms</a> · <a href="#">Privacy</a></span>
 </footer>
 
-<script>
-  function copyLink(btn) {
-    navigator.clipboard.writeText('https://decideformeplease.com').then(() => {
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = 'Copy Link', 2000);
-    });
-  }
-</script>
-
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function copyLin
