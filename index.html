@@ -21,8 +21,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<!-- Syne MUST load in its own request — combined with other families it renders stretched -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <!-- Meta Pixel Code -->
 <script>
@@ -59,10 +57,11 @@ src="https://www.facebook.com/tr?id=2066040063963697&ev=PageView&noscript=1"
     --green-line: rgba(198,241,53,0.25);
     --line: rgba(255,255,255,0.06);
     --line-2: rgba(255,255,255,0.10);
-    --font-display: 'Syne', sans-serif;
+    /* Display = the system grotesque the site has always rendered (matches the established look) */
+    --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'Space Mono', monospace;
-    --track-display: -0.045em;
+    --track-display: -0.025em;
     --radius-md: 10px;
     --radius-lg: 14px;
     --radius-xl: 16px;
@@ -249,7 +248,7 @@ src="https://www.facebook.com/tr?id=2066040063963697&ev=PageView&noscript=1"
     font-family: var(--font-display);
     font-weight: 800;
     font-size: clamp(2.4rem, 6vw, 3.6rem);
-    line-height: 0.96;
+    line-height: 0.92;
     letter-spacing: var(--track-display);
     margin-bottom: 1.1rem;
   }
