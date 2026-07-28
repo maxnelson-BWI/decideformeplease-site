@@ -147,14 +147,22 @@
     .brand {
       display: inline-flex;
       align-items: center;
+      gap: 0.55rem;
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: -0.035em;
       text-decoration: none;
     }
 
-    .brand img {
+    .brand-dot {
       display: block;
-      width: 48px;
-      height: 48px;
+      width: 11px;
+      height: 11px;
+      flex: 0 0 11px;
       border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(183,255,56,0.14), 0 0 12px rgba(183,255,56,0.28);
     }
 
     .header-link {
@@ -328,6 +336,8 @@
       margin-bottom: clamp(2.4rem, 5vw, 4.2rem);
     }
 
+    .section-head-centered { align-items: center; }
+
     .section-head h2 {
       margin-bottom: 0;
       font-size: clamp(2.2rem, 5vw, 4.5rem);
@@ -350,6 +360,8 @@
     }
 
     .example {
+      display: flex;
+      flex-direction: column;
       min-height: 250px;
       padding: 1.35rem;
       border: 1px solid var(--line);
@@ -372,6 +384,8 @@
     }
 
     .ruling {
+      margin-top: auto;
+      margin-bottom: 0;
       padding-top: 1rem;
       border-top: 1px solid var(--line);
       color: #d2d4ce;
@@ -648,6 +662,8 @@
         grid-template-columns: 1fr;
       }
 
+      .section-head-centered { align-items: start; }
+
       .hero {
         min-height: 0;
         padding-block: 4.5rem;
@@ -665,6 +681,7 @@
       h1 { font-size: clamp(3.55rem, 19vw, 5.2rem); }
       .hero { padding-block: 3.6rem 4.5rem; }
       .hero-copy { font-size: 1rem; }
+      .header-link { display: none; }
       .facts { grid-template-columns: 1fr; }
       .fact + .fact {
         border-top: 1px solid var(--line);
@@ -718,7 +735,7 @@
 
   <div class="wrap">
     <header>
-      <a class="brand" href="/" aria-label="Decide for Me home"><img src="/brand-logo.jpg" alt="" width="48" height="48"></a>
+      <a class="brand" href="/" aria-label="Decide for Me home"><span class="brand-dot" aria-hidden="true"></span><span>DecideForMe</span></a>
       <a class="header-link" href="/submit">Need help with a personal decision?</a>
     </header>
   </div>
@@ -733,7 +750,7 @@
 
       <form class="case-box" id="hero-form" action="/settle" method="get">
         <label for="case-input">What are you arguing about?</label>
-        <input id="case-input" name="case" type="text" autocomplete="off" placeholder="I cooked. Who does the dishes?">
+        <input id="case-input" name="case" type="text" autocomplete="off" placeholder="She vetoed three restaurants. Who picks dinner now?">
         <button class="button button-block" type="submit">Get the ruling · $10</button>
         <p class="case-note">You will review the details before paying.</p>
       </form>
@@ -757,33 +774,33 @@
         <div class="examples">
           <article class="example">
             <div class="example-number">CASE 01</div>
-            <h3>I cooked. Who does the dishes?</h3>
-            <p class="ruling"><strong>Ruling:</strong> The other person. Cooking and cleaning are separate jobs.</p>
+            <h3>I gave her three restaurant options. She said no to all of them but will not pick one. Who chooses dinner now?</h3>
+            <p class="ruling"><strong>Ruling:</strong> She does. If you reject every option, choosing becomes your job.</p>
           </article>
           <article class="example">
             <div class="example-number">CASE 02</div>
-            <h3>Does leaving the trash bag by the door count as taking it out?</h3>
-            <p class="ruling"><strong>Ruling:</strong> No. The trash is still inside the house.</p>
+            <h3>We agreed to leave at 8. He started getting ready at 8. Is that late?</h3>
+            <p class="ruling"><strong>Ruling:</strong> Yes. Leaving at 8 means being ready at 8.</p>
           </article>
           <article class="example">
             <div class="example-number">CASE 03</div>
-            <h3>Can I watch the next episode without her?</h3>
-            <p class="ruling"><strong>Ruling:</strong> No. You agreed to watch it together. Wait.</p>
+            <h3>My roommate's boyfriend stays over four nights a week and does his laundry here. Can I ask him to chip in?</h3>
+            <p class="ruling"><strong>Ruling:</strong> Yes. Four nights a week is more than an occasional guest.</p>
           </article>
           <article class="example">
             <div class="example-number">CASE 04</div>
-            <h3>Is it fine to put an empty carton back in the fridge?</h3>
-            <p class="ruling"><strong>Ruling:</strong> No. If there is nothing left in it, it does not belong in the fridge.</p>
+            <h3>I saved half my restaurant meal for lunch. He ate it after two days in the fridge. Does he owe me a replacement?</h3>
+            <p class="ruling"><strong>Ruling:</strong> Yes. Two days does not make somebody else's leftovers fair game.</p>
           </article>
           <article class="example">
             <div class="example-number">CASE 05</div>
-            <h3>Are five morning alarms reasonable if I need them to wake up?</h3>
-            <p class="ruling"><strong>Ruling:</strong> No. One alarm for you becomes five alarms for everyone else.</p>
+            <h3>I pay more rent because I have the bigger bedroom. Does that mean I get the final say on the thermostat?</h3>
+            <p class="ruling"><strong>Ruling:</strong> No. Extra rent pays for the larger room, not control of the shared space.</p>
           </article>
           <article class="example">
             <div class="example-number">CASE 06</div>
-            <h3>Can I use a bath towel more than once?</h3>
-            <p class="ruling"><strong>Ruling:</strong> Yes. You were clean when you used it.</p>
+            <h3>My friend asked for one bite of my meal, then ate about a quarter of it. Should he split the bill?</h3>
+            <p class="ruling"><strong>Ruling:</strong> Yes. One bite is a taste. A quarter of the meal is part of the order.</p>
           </article>
         </div>
       </div>
@@ -791,7 +808,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head section-head-centered">
           <h2>How it works</h2>
           <p>The process is simple. I just need the argument and enough context to make the call.</p>
         </div>
@@ -828,10 +845,10 @@
           </div>
           <div class="ruling-preview-body">
             <p class="ruling-preview-label">The question</p>
-            <p class="ruling-preview-question">I cooked. He says the person who cooks should also clean because I made the mess.</p>
+            <p class="ruling-preview-question">I gave her three restaurants to choose from. She said no to all of them but will not pick another place.</p>
             <p class="ruling-preview-label">The ruling</p>
-            <p class="ruling-preview-ruling">He does the dishes.</p>
-            <p class="ruling-preview-reason">Cooking and cleaning are separate jobs. You handled dinner. He can handle the sink.</p>
+            <p class="ruling-preview-ruling">She chooses dinner.</p>
+            <p class="ruling-preview-reason">She rejected every option, so choosing the next one is now her job.</p>
           </div>
         </article>
       </div>
