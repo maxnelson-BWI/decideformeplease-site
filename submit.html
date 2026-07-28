@@ -58,13 +58,21 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    gap: 0.55rem;
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.035em;
   }
 
-  .nav-logo img {
+  .brand-dot {
     display: block;
-    width: 48px;
-    height: 48px;
+    width: 11px;
+    height: 11px;
+    flex: 0 0 11px;
     border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 0 3px rgba(198,241,53,0.14), 0 0 12px rgba(198,241,53,0.28);
   }
 
   .nav-back {
@@ -226,7 +234,7 @@ src="https://www.facebook.com/tr?id=2066040063963697&ev=PageView&noscript=1"
 <body>
 
 <nav>
-  <a href="/" class="nav-logo" aria-label="Decide for Me home"><img src="/brand-logo.jpg" alt="" width="48" height="48"></a>
+  <a href="/" class="nav-logo" aria-label="Decide for Me home"><span class="brand-dot" aria-hidden="true"></span><span>DecideForMe</span></a>
   <a href="/" class="nav-back">← Back to Home</a>
 </nav>
 
