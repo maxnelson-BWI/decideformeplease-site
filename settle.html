@@ -6,6 +6,9 @@
   <title>Submit Your Argument | Decide for Me</title>
   <meta name="description" content="Tell me the low-stakes argument you want settled. The ruling costs $10 and arrives by email within 24 hours.">
   <link rel="canonical" href="https://decideformeplease.com/settle">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ4H07NDC8"></script>
   <script>
@@ -42,7 +45,7 @@
       --blue: #65a8ff;
       --pink: #fa67bc;
       --yellow: #f6d94a;
-      --max: 980px;
+      --max: 920px;
     }
 
     * { box-sizing: border-box; }
@@ -53,7 +56,7 @@
       background:
         radial-gradient(circle at 50% 0%, rgba(183,255,56,0.08), transparent 28rem),
         var(--paper);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "DM Sans", Arial, sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -79,11 +82,16 @@
     }
 
     .brand {
-      font-size: 0.88rem;
-      font-weight: 900;
-      letter-spacing: 0.09em;
+      display: inline-flex;
+      align-items: center;
       text-decoration: none;
-      text-transform: uppercase;
+    }
+
+    .brand img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
     }
 
     .back {
@@ -96,12 +104,12 @@
     .back:hover { color: var(--ink); }
 
     main {
-      padding-block: clamp(3.5rem, 8vw, 6.5rem);
+      padding-block: clamp(3rem, 7vw, 5rem);
     }
 
     .intro {
-      max-width: 720px;
-      margin: 0 auto 2.4rem;
+      max-width: 620px;
+      margin: 0 auto 2rem;
       text-align: center;
     }
 
@@ -115,46 +123,40 @@
     }
 
     h1 {
-      margin: 0 0 1rem;
-      font-size: clamp(2.8rem, 8vw, 5.7rem);
-      font-weight: 950;
-      letter-spacing: -0.065em;
-      line-height: 0.91;
+      margin: 0 0 0.65rem;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1;
     }
 
     .intro-copy {
       max-width: 620px;
       margin: 0 auto;
       color: var(--muted);
-      font-size: 1.02rem;
+      font-size: 0.94rem;
     }
 
-    .facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      justify-content: center;
-      margin: 1.4rem 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .facts li {
-      padding: 0.4rem 0.65rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: #cfd1cb;
-      background: var(--panel);
-      font-size: 0.73rem;
+    .price-reminder {
+      margin: 0.85rem 0 0;
+      color: var(--green);
+      font-size: 1.2rem;
       font-weight: 800;
     }
 
+    .human-note {
+      margin: 0.25rem 0 0;
+      color: #cfd1cb;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
     .form-shell {
-      max-width: 790px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: clamp(0.65rem, 2vw, 1.25rem);
+      padding: 1rem 1.5rem;
       border: 1px solid #343831;
-      border-radius: 18px;
+      border-radius: 14px;
       background: var(--panel);
       box-shadow: 0 24px 80px rgba(0,0,0,0.35);
     }
@@ -162,8 +164,8 @@
     .tally-embed-container {
       overflow: hidden;
       min-height: 580px;
-      border-radius: 11px;
-      background: #ffffff;
+      border-radius: 10px;
+      background: var(--panel);
     }
 
     .tally-embed-container iframe {
@@ -174,7 +176,7 @@
     }
 
     .payment-note {
-      max-width: 680px;
+      max-width: 600px;
       margin: 1.2rem auto 0;
       color: #888c83;
       font-size: 0.76rem;
@@ -208,7 +210,8 @@
       .wrap { width: min(calc(100% - 1rem), var(--max)); }
       header { min-height: 62px; padding-inline: 0.2rem; }
       main { padding-block: 3rem 4rem; }
-      .form-shell { padding: 0.35rem; border-radius: 13px; }
+      .brand img { width: 44px; height: 44px; }
+      .form-shell { padding: 0.75rem; border-radius: 13px; }
       .tally-embed-container { border-radius: 9px; }
     }
   </style>
@@ -219,8 +222,8 @@
 
   <div class="wrap">
     <header>
-      <a class="brand" href="/">Decide for Me</a>
-      <a class="back" href="/">Back to the homepage</a>
+      <a class="brand" href="/" aria-label="Decide for Me home"><img src="/brand-logo.jpg" alt="" width="48" height="48"></a>
+      <a class="back" href="/">Back to home</a>
     </header>
   </div>
 
@@ -230,11 +233,8 @@
         <p class="eyebrow">Low-stakes arguments only</p>
         <h1>Tell me what happened.</h1>
         <p class="intro-copy">Give me the argument, the exact question you want settled, and any context I should know. I will read it and make the call.</p>
-        <ul class="facts" aria-label="Service facts">
-          <li>$10 flat</li>
-          <li>Ruling within 24 hours</li>
-          <li>Decided by a real person</li>
-        </ul>
+        <p class="price-reminder">$10 · Delivered within 24 hours</p>
+        <p class="human-note">Read and decided by a real person.</p>
       </div>
 
       <div class="form-shell">

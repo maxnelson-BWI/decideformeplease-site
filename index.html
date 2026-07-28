@@ -15,6 +15,9 @@
   <meta name="twitter:title" content="Stop arguing. I'll decide.">
   <meta name="twitter:description" content="A real person settles your low-stakes argument for $10.">
   <meta name="twitter:image" content="https://decideformeplease.com/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ4H07NDC8"></script>
   <script>
@@ -65,7 +68,7 @@
       background:
         radial-gradient(circle at 80% 5%, rgba(183, 255, 56, 0.08), transparent 22rem),
         var(--paper);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "DM Sans", Arial, sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -107,7 +110,9 @@
 
     .ticker-group {
       display: flex;
+      flex-shrink: 0;
       gap: 1.7rem;
+      min-width: max-content;
       padding: 0.48rem 0.85rem;
     }
 
@@ -118,7 +123,7 @@
     }
 
     @keyframes ticker {
-      to { transform: translateX(-50%); }
+      to { transform: translateX(-25%); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -140,11 +145,16 @@
     }
 
     .brand {
-      font-size: 0.88rem;
-      font-weight: 900;
-      letter-spacing: 0.09em;
+      display: inline-flex;
+      align-items: center;
       text-decoration: none;
-      text-transform: uppercase;
+    }
+
+    .brand img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
     }
 
     .header-link {
@@ -183,14 +193,15 @@
       max-width: 760px;
       margin-bottom: 1.35rem;
       font-size: clamp(3.8rem, 9.5vw, 8.3rem);
-      font-weight: 950;
+      font-weight: 900;
       letter-spacing: -0.075em;
-      line-height: 0.84;
+      line-height: 0.96;
     }
 
     h1 span {
       display: block;
       color: var(--green);
+      margin-top: 0.08em;
     }
 
     .hero-copy {
@@ -272,37 +283,6 @@
       font-size: 0.75rem;
       text-align: center;
     }
-
-    .or {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin: 1rem 0;
-      color: #73776f;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .or::before,
-    .or::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .coin-link {
-      display: block;
-      color: #d4d6d0;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .coin-link:hover { color: var(--green); }
 
     .facts {
       display: grid;
@@ -455,54 +435,57 @@
       font-size: 1.03rem;
     }
 
-    .email {
+    .ruling-preview {
       overflow: hidden;
-      border: 1px solid #d1d3cd;
-      border-radius: 10px;
-      color: #161715;
-      background: #f0f1ec;
-      box-shadow: 16px 18px 0 #252922;
+      border: 1px solid #3c4138;
+      border-top: 3px solid var(--green);
+      border-radius: 14px;
+      color: var(--ink);
+      background: var(--panel);
+      box-shadow: 16px 18px 0 #080908;
     }
 
-    .email-bar {
+    .ruling-preview-bar {
       display: flex;
       justify-content: space-between;
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid #c9cbc4;
-      color: #5e615b;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    .email-body { padding: clamp(1.4rem, 4vw, 2.4rem); }
+    .ruling-preview-body { padding: clamp(1.4rem, 4vw, 2.4rem); }
 
-    .email-label {
+    .ruling-preview-label {
       margin-bottom: 0.35rem;
-      color: #777a72;
+      color: var(--green);
       font-size: 0.68rem;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .email-question {
+    .ruling-preview-question {
       margin-bottom: 2rem;
+      color: #d3d5cf;
       font-weight: 700;
     }
 
-    .email-ruling {
+    .ruling-preview-ruling {
       margin-bottom: 0.75rem;
+      color: var(--ink);
       font-size: clamp(1.45rem, 4vw, 2.3rem);
-      font-weight: 950;
+      font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1.03;
     }
 
-    .email-reason {
+    .ruling-preview-reason {
       margin: 0;
-      color: #555851;
+      color: var(--muted);
     }
 
     .boundaries {
@@ -692,7 +675,7 @@
       .example { min-height: 0; }
       .choice-card { grid-template-columns: 1fr; }
       .choice-card .button { width: 100%; }
-      .email { box-shadow: 8px 9px 0 #252922; }
+      .ruling-preview { box-shadow: 8px 9px 0 #080908; }
     }
   </style>
 </head>
@@ -716,13 +699,27 @@
         <span>Email within 24 hours</span>
         <span>One ruling</span>
       </div>
+      <div class="ticker-group">
+        <span>$10 flat</span>
+        <span>Real human</span>
+        <span>Low-stakes only</span>
+        <span>Email within 24 hours</span>
+        <span>One ruling</span>
+      </div>
+      <div class="ticker-group">
+        <span>$10 flat</span>
+        <span>Real human</span>
+        <span>Low-stakes only</span>
+        <span>Email within 24 hours</span>
+        <span>One ruling</span>
+      </div>
     </div>
   </div>
 
   <div class="wrap">
     <header>
-      <a class="brand" href="/" aria-label="Decide for Me home">Decide for Me</a>
-      <a class="header-link" href="/submit">Can't choose? Try this instead</a>
+      <a class="brand" href="/" aria-label="Decide for Me home"><img src="/brand-logo.jpg" alt="" width="48" height="48"></a>
+      <a class="header-link" href="/submit">Need help with a personal decision?</a>
     </header>
   </div>
 
@@ -739,8 +736,6 @@
         <input id="case-input" name="case" type="text" autocomplete="off" placeholder="I cooked. Who does the dishes?">
         <button class="button button-block" type="submit">Get the ruling · $10</button>
         <p class="case-note">You will review the details before paying.</p>
-        <div class="or"><span>or</span></div>
-        <a class="coin-link" href="/submit">Need help choosing, not arguing? Use Decide for Me.</a>
       </form>
     </div>
 
@@ -826,17 +821,17 @@
           <p>The email says who wins, followed by a short reason.</p>
         </div>
 
-        <article class="email" aria-label="Example ruling email">
-          <div class="email-bar">
+        <article class="ruling-preview" aria-label="Example ruling">
+          <div class="ruling-preview-bar">
             <span>Decide for Me</span>
-            <span>Ruling delivered</span>
+            <span>Example ruling</span>
           </div>
-          <div class="email-body">
-            <p class="email-label">The question</p>
-            <p class="email-question">I cooked. He says the person who cooks should also clean because I made the mess.</p>
-            <p class="email-label">The ruling</p>
-            <p class="email-ruling">He does the dishes.</p>
-            <p class="email-reason">Cooking and cleaning are separate jobs. You handled dinner. He can handle the sink.</p>
+          <div class="ruling-preview-body">
+            <p class="ruling-preview-label">The question</p>
+            <p class="ruling-preview-question">I cooked. He says the person who cooks should also clean because I made the mess.</p>
+            <p class="ruling-preview-label">The ruling</p>
+            <p class="ruling-preview-ruling">He does the dishes.</p>
+            <p class="ruling-preview-reason">Cooking and cleaning are separate jobs. You handled dinner. He can handle the sink.</p>
           </div>
         </article>
       </div>
